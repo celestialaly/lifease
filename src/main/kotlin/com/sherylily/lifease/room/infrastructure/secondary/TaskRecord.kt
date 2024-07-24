@@ -19,7 +19,7 @@ class TaskRecord: RecordToDomainInterface<Task> {
     private var completed: Boolean = false
     private var priority: Int = 1
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "room_id", referencedColumnName = "id", nullable = false)
     private var room: RoomRecord? = null
 
@@ -47,5 +47,11 @@ class TaskRecord: RecordToDomainInterface<Task> {
 
     fun getId(): UUID? {
         return id
+    }
+
+    fun setRoom(roomRecord: RoomRecord): TaskRecord {
+        room = roomRecord
+
+        return this
     }
 }

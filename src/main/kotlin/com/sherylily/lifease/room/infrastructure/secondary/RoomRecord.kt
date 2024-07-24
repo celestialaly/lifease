@@ -5,6 +5,7 @@ import com.sherylily.lifease.common.RecordToDomainInterface
 import com.sherylily.lifease.common.RoomId
 import com.sherylily.lifease.common.TaskId
 import com.sherylily.lifease.room.domain.Room
+import jakarta.persistence.CascadeType
 import jakarta.persistence.Entity
 import jakarta.persistence.Id
 import jakarta.persistence.OneToMany
@@ -21,7 +22,7 @@ class RoomRecord: RecordToDomainInterface<Room> {
     private var name: String? = null
     private var order: Int = 0
 
-    @OneToMany(mappedBy = "room")
+    @OneToMany(mappedBy = "room", cascade = [CascadeType.ALL])
     private var tasks: MutableSet<TaskRecord> = mutableSetOf()
 
     companion object: DomainToRecordInterface<Room, RoomRecord> {
@@ -31,7 +32,7 @@ class RoomRecord: RecordToDomainInterface<Room> {
             record.id = domain.id.toUUID()
             record.name = domain.name
             record.order = domain.order
-            record.tasks = domain.tasks.map { TaskRecord.fromDomain(it.value) }.toMutableSet()
+            record.tasks = domain.tasks.map { TaskRecord.fromDomain(it.value) }.map { it.setRoom(record) }.toMutableSet()
 
             return record
         }

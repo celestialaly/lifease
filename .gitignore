@@ -1,6 +1,6 @@
 # custom
 data/
-application.yaml
+src/main/resources/application.yaml
 
 # default settings
 .gradle
