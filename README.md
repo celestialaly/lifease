@@ -10,9 +10,9 @@ As a developer, I immediately considered developing a tool to help with that
 ## Developer goal
 
 - Improve my Kotlin/Spring Boot/TDD/DDD experience & keep learning/experimenting things
-- Improve my VueJS experience
-- Set up the app on our local network with a Raspberry Pie
-- Learning, learning, learning.
+- Learn Nuxt & improve my VueJS experience
+- Set up the app on our local network with a Raspberry Pi
+- Learn, learn, learn.
 
 ## MVP Features objectives
 
