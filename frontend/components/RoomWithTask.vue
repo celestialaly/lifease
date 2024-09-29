@@ -26,10 +26,10 @@
                 <input type="checkbox" :id="task.id"/>&nbsp;
                 <label :for="task.id">{{task.name}}</label>
 
-                <hr class="my-1" />
+                <hr class="my-1 dark:border-neutral-900" />
             </li>
             <li class="pl-2">
-                <input v-model="newTaskName" type="text" class="outline-none" placeholder="Ajouter un élément" @keyup.enter="addTask" />
+                <input v-model="newTaskName" type="text" class="outline-none dark:bg-slate-800" placeholder="Ajouter un élément" @keyup.enter="addTask" />
             </li>
         </ul>
     </Card>

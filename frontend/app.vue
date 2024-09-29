@@ -6,7 +6,7 @@ const { data } = await useFetch(config.public.backendApiUrl + '/room')
 </script>
 
 <template>
-  <div class="bg-slate-100 h-screen">
+  <div class="bg-slate-100 dark:bg-slate-800 h-screen">
     <NuxtRouteAnnouncer />
     <NavBar/>
 
