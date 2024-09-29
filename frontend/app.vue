@@ -11,7 +11,9 @@ const { data } = await useFetch(config.public.backendApiUrl + '/room')
     <NavBar/>
 
     <div class="container mx-auto mt-5">
-      <div class="w-full columns-2 md:columns-3 gap-4">
+      <Dailies />
+
+      <div class="w-full columns-2 md:columns-3 gap-4 mt-4">
         <div v-for="room in data" class="w-full break-inside-avoid">
           <RoomWithTask :room="room"></RoomWithTask>
         </div>

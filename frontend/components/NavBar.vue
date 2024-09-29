@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import DarkMode from "./DarkMode.vue";
 const colorMode = useColorMode()
 const isDark = computed({
   get() {
@@ -31,7 +30,7 @@ const links = [[
 
 <template>
   <div class="bg-violet-200 dark:bg-pink-900">
-    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+    <div class="container mx-auto">
       <UHorizontalNavigation :links="links">
         <template #default="{ link }">
           <template v-if="link.label == 'darkmode'">
