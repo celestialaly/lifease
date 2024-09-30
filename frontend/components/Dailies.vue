@@ -17,7 +17,7 @@ const tasks = [
                 </button><br/>
                 <span class="text-slate-200/60 text-xs">{{ task.name }}</span>
             </div>
-            <span v-if="index < tasks.length - 1" class="p-0 m-0 h-5 grow border-b border-pink-600">&nbsp;</span>
+            <span v-if="index < tasks.length - 1" class="p-0 m-0 h-5 grow border-b border-pink-600"></span>
         </template>
     </div>
 </template>

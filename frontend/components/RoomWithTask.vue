@@ -21,7 +21,7 @@
 
 <template>
     <Card :title="room.name">
-        <ul class="px-2 my-1">
+        <ul class="px-2 my-1 text-gray-200">
             <li v-for="task in room.tasks">
                 <input type="checkbox" :id="task.id"/>&nbsp;
                 <label :for="task.id">{{task.name}}</label>
@@ -29,7 +29,7 @@
                 <hr class="my-1 dark:border-neutral-900" />
             </li>
             <li class="pl-2">
-                <input v-model="newTaskName" type="text" class="outline-none dark:bg-slate-800" placeholder="Ajouter un élément" @keyup.enter="addTask" />
+                <input v-model="newTaskName" type="text" class="outline-none dark:bg-gray-800" placeholder="Ajouter un élément" @keyup.enter="addTask" />
             </li>
         </ul>
     </Card>

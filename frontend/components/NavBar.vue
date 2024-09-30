@@ -12,7 +12,9 @@ function switchColorMode () {
   isDark.value = !isDark
 }
 
-const links = [[
+const links = [
+  [],
+  [
   {
     label: 'Dashboard',
     icon: 'i-heroicons-home',
