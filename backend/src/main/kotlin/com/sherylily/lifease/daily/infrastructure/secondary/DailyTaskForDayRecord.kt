@@ -1,48 +1,33 @@
 package com.sherylily.lifease.daily.infrastructure.secondary
 
-import com.sherylily.lifease.common.DailyTaskId
-import com.sherylily.lifease.common.DomainToRecordInterface
-import com.sherylily.lifease.common.RecordToDomainInterface
-import com.sherylily.lifease.daily.domain.DailyTask
 import jakarta.persistence.Entity
 import jakarta.persistence.Id
-import org.hibernate.annotations.JdbcTypeCode
-import org.hibernate.type.SqlTypes
-import java.util.*
+import jakarta.persistence.JoinColumn
+import jakarta.persistence.ManyToOne
+import java.time.LocalDate
 
 @Entity
-class DailyTaskForDayRecord: RecordToDomainInterface<DailyTask> {
+class DailyTaskForDayRecord {
     @Id
-    @JdbcTypeCode(SqlTypes.VARCHAR)
-    private var id: UUID? = null
+    private var completedDate: LocalDate? = null
 
-    private var name: String? = null
-    private var icon: String? = null
-    private var order: Int = 0
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "daily_task_id", referencedColumnName = "id", nullable = false)
+    private var dailyTask: DailyTaskRecord? = null
 
-    companion object: DomainToRecordInterface<DailyTask, DailyTaskForDayRecord> {
-        override fun fromDomain(domain: DailyTask): DailyTaskForDayRecord {
+    companion object {
+        fun create(task: DailyTaskRecord, completedDate: LocalDate): DailyTaskForDayRecord {
             val record = DailyTaskForDayRecord()
 
-            record.id = domain.id.toUUID()
-            record.name = domain.name
-            record.icon = domain.icon
-            record.order = domain.order
+            record.dailyTask = task
+            record.completedDate = completedDate
 
             return record
         }
     }
 
-    override fun toDomain(): DailyTask {
-        return DailyTask(
-            id = DailyTaskId(id!!),
-            name = name!!,
-            icon = icon!!,
-            order = order
-        )
-    }
-
-    fun getId(): UUID? {
-        return id
+    fun getCompletedDate(): LocalDate {
+        return completedDate!!
     }
 }
